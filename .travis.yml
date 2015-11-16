@@ -1,14 +1,13 @@
 before_install:
-- "sudo apt-get update && sudo apt-get install --no-install-recommends texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra dvipng texlive-latex-recommended"
+- sudo apt-get update && sudo apt-get install --no-install-recommends texlive-fonts-recommended
+  texlive-latex-extra texlive-fonts-extra dvipng texlive-latex-recommended
 script:
 - mkdir _build
 - pdflatex -interaction=nonstopmode -halt-on-error -output-directory _build test.tex
 deploy:
   provider: releases
-  api_key: 9fb7a39eb6d932981f9aee7a1008d49d87502d30
-  file:
-  - _build/test.pdf
-  skip_cleanup: true
+  api_key:
+    secure: YMgYvO8JmrfBS2IfPlXbucElLVq0mI2bizNQiPuGwEAnszm1SrdYIX98mFnuQsS13My/YEH6ZjGJSPFpnUZ3zGZNWzGECn0AYCFPR9KJ5rLLc7N56b7wJjYDkpnggFusqtxHI3foJAzUm4MzxqZIIOMXblVyfX4dS3iH6Cco6iht1grDeAsM2dBSUGoKbuhYMrtpqb9rMJguFsPJv3ZUTm02rPSaSKeuAYirawuZnwjo4763WIMAOkUwLneLFhBg8SXkOxTj+4sPPNkGpeywbEaK3V5ZzpKNTdIV/Nj63E7FlJ5Xcil+3flODge1lK9opFqgjbU/TF53wBIE/hc9ubJmURmNM5CcYI7cIlKhaqJReGfv4YbB4PobpiI4JaSOzJikcF+zzwXh2iCLS9MqkMAWNKfDdQT3Oxcv+rzEmKJRF54DaOh4EZe5JxPYzErHlpPxv66TFo4HrD7xgKMxI9UAXGIFLkDNtJ3zRdGryM9BW8FSlHH+JjNF0z7hXsS7cUNmEBGja8+us7ZdMfzgUhL02tjoIiao+NbBz/BSdQuiySzqBBLYrMxf3seUJP0bMEpVqEgey1dgPdykcIno6pmOkcLnQxSqg2HPYzJ2q36ajxsVIuqCTxoGxoEfePQuIyzoZlOVzB4eObtLebOk7ku3hVIgM7AAT/lB7SX7Jtc=
+  file: ./_build/test.pdf
   on:
-    tags: true
-
+    repo: asctest/latex-ci
