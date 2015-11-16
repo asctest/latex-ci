@@ -3,14 +3,12 @@ before_install:
 script:
 - mkdir _build
 - pdflatex -interaction=nonstopmode -halt-on-error -output-directory _build test.tex
-#deploy:
-#  provider: releases
-#  api_key:
-#    secure: [YOUR KEY]
-#  file:
-#  - _build/your_file_1.pdf
-#  - _build/your_file_2.pdf
-#  skip_cleanup: true
-#  on:
-#    tags: true
+deploy:
+  provider: releases
+  api_key: 9fb7a39eb6d932981f9aee7a1008d49d87502d30
+  file:
+  - _build/test.pdf
+  skip_cleanup: true
+  on:
+    tags: true
 
